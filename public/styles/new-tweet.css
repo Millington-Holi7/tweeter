@@ -1,0 +1,26 @@
+section {
+  display: flex;
+  flex-direction: column;
+  background-color: #F2E4C6;
+  width: 100%;
+  padding: 0px 40px 20px 40px;
+}
+
+textarea {
+  border: none;
+  background-color: #F2E4C6;
+  border-bottom: .5rem solid;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.new-tweet-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Bungee", sans-serif;
+}
+
+button {
+  color: #FFFFFF;
+  background-color: #4056A1;
+}
