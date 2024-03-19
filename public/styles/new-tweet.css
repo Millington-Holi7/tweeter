@@ -9,7 +9,7 @@ section {
 textarea {
   border: none;
   background-color: #F2E4C6;
-  border-bottom: .5rem solid;
+  border-bottom: .5rem solid #545149;
   width: 100%;
   margin-bottom: 10px;
 }
@@ -23,4 +23,8 @@ textarea {
 button {
   color: #FFFFFF;
   background-color: #4056A1;
+}
+
+.negative {
+  color: red;
 }
