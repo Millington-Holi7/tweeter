@@ -31,4 +31,5 @@ main {
   margin: auto;
   justify-content: center;
   background-color: inherit;
+  flex-direction: column;
 }
