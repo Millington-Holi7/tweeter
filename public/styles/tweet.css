@@ -1,4 +1,4 @@
-.tweet {
+.tweets-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -9,7 +9,7 @@
   margin-bottom: 10px;
 }
 
-.tweet header {
+.tweets-container header {
   display: flex;
   margin: 5px;
   height: 100px;
@@ -36,15 +36,15 @@ footer {
 
 }
 
-.tweet:hover {
+.tweets-container:hover {
   box-shadow: 5px 5px 10px grey;
 }
 
-.tweet-icons {
+.tweets-container-icons {
   color: #545149;
 }
 
-.tweet-icons i:hover {
+.tweets-container-icons i:hover {
   transition: color 0.3s ease;
   color: #BFD2D1;
 }
