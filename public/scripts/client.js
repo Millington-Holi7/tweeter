@@ -69,7 +69,7 @@ $(document).ready(() => {
     }
   }
 
-  const loadtweets = function () {
+  const loadTweets = function () {
     return $.ajax({
       method: "GET",
       url: "/tweets",
@@ -82,7 +82,7 @@ $(document).ready(() => {
       }
     })
   }
-  loadtweets()
+  loadTweets()
   // renderTweets(tweetData)
 });
 
@@ -94,17 +94,26 @@ $('form').on('submit', function (event) {
   const serializedData = $(form).serialize();
   console.log("Form serialized: ", serializedData);
 
+  const tweetContent = $('#tweet-text');
+  const maxLength = ('.counter');
 
-  // assuming serializedData is correctly structured for your renderTweets function
+  if (tweetContent.val().trim() === '') {
+    alert('Tweet content is required.');
+  }
+
+  if (tweetContent.val().length > maxLength) {
+    alert('Tweet content is too long.');
+  }
+
   $.ajax({
     type: "POST",
     url: "/tweets",
     data: serializedData, // Include the serialized data in the AJAX call
     success: function (receivedData) {
-      renderTweets(receivedData); // Call renderTweets with received data if needed
+      loadTweets(receivedData); // Call renderTweets with received data if needed
     },
-    error: function () {
-      alert('Error with POST request');
+    error: function (jqXHR, textStatus, errorThrown) {
+      alert('Error with POST request', textStatus, jqXHR, errorThrown);
     }
   });
 })
