@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  console.log("Ready from js file");
-
   $('#tweet-text').on('input', function () {
     let textCount = $(this).val().length;
     let remaining = 140 - textCount;
