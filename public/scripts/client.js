@@ -10,9 +10,8 @@ const onSubmit = function (event) {
   event.preventDefault();
   const form = event.currentTarget; // Correctly gets the form
   console.log("Form: ", $(form));
-  const serializedData = $(form).serialize();
+  let serializedData = $(form).serialize();
   console.log("Form serialized: ", serializedData);
-
   const tweetContent = $('#tweet-text');
   const maxLength = 140;
 
@@ -26,43 +25,45 @@ const onSubmit = function (event) {
     return;
   }
 
-  $.post("/tweets", serializedData)
-    .done(function (receivedData) {
-      loadTweets(receivedData);
-    })
-    .fail(function (jqXHR, textStatus, errorThrown) {
-      alert('Error with POST request', textStatus, jqXHR, errorThrown);
-    });
+  $.post("/tweets", serializedData, loadTweets)
 
 
   tweetContent.val("");
-}
+};
 
-
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 const createTweetElement = function (tweetData) {
-  const timeAgoString = timeago.format(tweetData.created_at)
+
+  const timeAgoString = timeago.format(tweetData.created_at);
+
+  const escapeText = escape(tweetData.content.text);
 
   const $tweetElement = $(`
-  <article class="tweets-container">
-<header>
-<span class="left-header">
-  <img src="${tweetData.user.avatars}" height="50" width="50">
-  <h3>${tweetData.user.name} </h3>
-</span>
-<span class="tag">${tweetData.user.handle}</span>
-</header>
-<section class="tweet-text">${tweetData.content.text}</section>
-<footer>
-<span>${timeAgoString}</span>
-<div class="tweet-icons">
-  <i class="fa-sharp fa-solid fa-flag"></i>
-  <i class="fa-solid fa-retweet"></i>
-  <i class="fa-solid fa-heart"></i>
-</div>
-</footer>
-</article>
-` );
+    <article class="tweets-container">
+  <header>
+  <span class="left-header">
+    <img src="${tweetData.user.avatars}" height="50" width="50">
+    <h3>${tweetData.user.name} </h3>
+  </span>
+  <span class="tag">${tweetData.user.handle}</span>
+  </header>
+  <section class="tweet-text">${escapeText}</section>
+  <footer>
+  <span>${timeAgoString}</span>
+  <div class="tweet-icons">
+    <i class="fa-sharp fa-solid fa-flag"></i>
+    <i class="fa-solid fa-retweet"></i>
+    <i class="fa-solid fa-heart"></i>
+  </div>
+  </footer>
+  </article>
+  ` );
+
 
   return $tweetElement;
 }
