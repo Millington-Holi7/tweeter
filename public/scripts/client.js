@@ -5,7 +5,7 @@ $(document).ready(() => {
   $('form').on('submit', onSubmit)
 });
 
-
+//collects the input from new-tweet form
 const onSubmit = function (event) {
   event.preventDefault();
   const form = event.currentTarget; // Correctly gets the form
@@ -15,13 +15,15 @@ const onSubmit = function (event) {
   const tweetContent = $('#tweet-text');
   const maxLength = 140;
 
+  clearError();
+
   if (tweetContent.val().trim() === '') {
-    alert('Tweet content is required.');
+    showError('error-message', 'Tweet content is required.')
     return;
   }
 
   if (tweetContent.val().length > maxLength) {
-    alert('Tweet content is too long.');
+    showError('error-message', 'Tweet content is too long.');
     return;
   }
 
@@ -31,12 +33,8 @@ const onSubmit = function (event) {
   tweetContent.val("");
 };
 
-const escape = function (str) {
-  let div = document.createElement("div");
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-};
 
+// tweet layout
 const createTweetElement = function (tweetData) {
 
   const timeAgoString = timeago.format(tweetData.created_at);
@@ -44,38 +42,35 @@ const createTweetElement = function (tweetData) {
   const escapeText = escape(tweetData.content.text);
 
   const $tweetElement = $(`
-    <article class="tweets-container">
-  <header>
-  <span class="left-header">
+    <article class="display-tweet">
+    <header>
+    <span class="left-header">
     <img src="${tweetData.user.avatars}" height="50" width="50">
     <h3>${tweetData.user.name} </h3>
-  </span>
-  <span class="tag">${tweetData.user.handle}</span>
-  </header>
-  <section class="tweet-text">${escapeText}</section>
-  <footer>
-  <span>${timeAgoString}</span>
-  <div class="tweet-icons">
+    </span>
+    <span class="tag">${tweetData.user.handle}</span>
+    </header>
+    <span class="tweet-text">${escapeText}</span>
+    <footer>
+    <span>${timeAgoString}</span>
+    <div class="tweet-icons">
     <i class="fa-sharp fa-solid fa-flag"></i>
     <i class="fa-solid fa-retweet"></i>
     <i class="fa-solid fa-heart"></i>
-  </div>
-  </footer>
-  </article>
-  ` );
-
+    </div>
+    </footer>
+    </article>
+    ` );
 
   return $tweetElement;
 }
 
 
 const loadTweets = function () {
-
   $.get("/tweets")
     .then(data => {
       renderTweets(data)
     })
-
 }
 
 const renderTweets = function (tweets) {
@@ -83,5 +78,26 @@ const renderTweets = function (tweets) {
   for (const tweet of tweets) {
     const element = createTweetElement(tweet)
     $('#tweets-container').prepend(element);
+  }
+}
+
+
+//user input function to change special characters into text so our system doesn't see it as a line of code
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+//error message helper function from input validation
+const showError = function (errorElement, errorMessage) {
+  document.querySelector("." + errorElement).classList.add("display-error");
+  document.querySelector("." + errorElement).innerHTML = errorMessage;
+}
+
+const clearError = function () {
+  let errors = document.querySelectorAll('.error-message');
+  for (let error of errors) {
+    error.classList.remove("display-error");
   }
 }
