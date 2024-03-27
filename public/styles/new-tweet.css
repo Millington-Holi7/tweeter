@@ -1,5 +1,6 @@
 .new-tweet {
-  display: flex;
+  display: none;
+  /* display: flex; */
   flex-direction: column;
   background-color: #BFD2D1;
   width: 100%;
