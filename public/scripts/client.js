@@ -3,6 +3,12 @@ $(document).ready(() => {
   loadTweets()
 
   $('form').on('submit', onSubmit)
+
+  //nav right header. slides down and up the new-tweet when clicked
+  $('.rightHeader').on('click', function () {
+    $('.new-tweet').slideToggle();
+  });
+
 });
 
 //collects the input from new-tweet form
