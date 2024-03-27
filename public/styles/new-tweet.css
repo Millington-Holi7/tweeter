@@ -30,3 +30,18 @@ button {
 .negative {
   color: red;
 }
+
+.error-message {
+  color: #af4242;
+  background-color: #fde8ec;
+  border: 2px solid #af4242;
+  text-align: center;
+  display: none;
+  padding: 5px;
+  margin: 10px;
+
+}
+
+.error-message.display-error {
+  display: block;
+}
