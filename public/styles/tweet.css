@@ -1,4 +1,4 @@
-.tweets-container {
+.display-tweet {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -9,7 +9,7 @@
   margin-bottom: 10px;
 }
 
-.tweets-container header {
+.display-tweet header {
   display: flex;
   margin: 5px;
   height: 100px;
@@ -24,6 +24,12 @@
   gap: 10px;
 }
 
+
+.tweet-text {
+  word-wrap: break-word;
+  height: fit-content;
+}
+
 .tag {
   float: right;
 }
@@ -33,18 +39,17 @@ footer {
   display: flex;
   padding: 15px 10px 0 10px;
   justify-content: space-between;
-
 }
 
-.tweets-container:hover {
+.display-tweet:hover {
   box-shadow: 5px 5px 10px grey;
 }
 
-.tweets-container-icons {
+.tweet-icons {
   color: #545149;
 }
 
-.tweets-container-icons i:hover {
-  transition: color 0.3s ease;
+.tweet-icons i:hover {
+  transition: color 0.2s ease;
   color: #BFD2D1;
 }
