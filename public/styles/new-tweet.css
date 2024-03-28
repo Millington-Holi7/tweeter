@@ -44,9 +44,9 @@ button {
 .error-message.display-error {
   display: block;
 }
-
+/* 
 @media only screen and (min-width: 1024px) {
   .new-tweet {
     display: flex;
   }
-}
+} */
