@@ -24,7 +24,6 @@
   gap: 10px;
 }
 
-
 .tweet-text {
   word-wrap: break-word;
   height: fit-content;
@@ -35,7 +34,7 @@
 }
 
 footer {
-  border-top: .5rem solid #545149;
+  border-top: 0.5rem solid #545149;
   display: flex;
   padding: 15px 10px 0 10px;
   justify-content: space-between;
