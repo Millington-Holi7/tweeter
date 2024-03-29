@@ -1,6 +1,5 @@
 .new-tweet {
   display: none;
-  /* display: flex; */
   flex-direction: column;
   background-color: #BFD2D1;
   width: 100%;
@@ -11,7 +10,7 @@
 textarea {
   border: none;
   background-color: inherit;
-  border-bottom: .5rem solid #545149;
+  border-bottom: 0.5rem solid #545149;
   width: 100%;
   margin-bottom: 10px;
 }
@@ -44,9 +43,3 @@ button {
 .error-message.display-error {
   display: block;
 }
-/* 
-@media only screen and (min-width: 1024px) {
-  .new-tweet {
-    display: flex;
-  }
-} */
