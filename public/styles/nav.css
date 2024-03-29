@@ -10,6 +10,13 @@ nav {
   top: 0;
 }
 
+nav i {
+  color: red;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  transform-origin: bottom;
+}
+
 span.title {
   font-family: "Bungee", sans-serif;
 }
@@ -21,14 +28,6 @@ span.title {
   height: 100%;
   justify-content: center;
   cursor: pointer;
-  /*font-family: "Bungee", sans-serif; */
-}
-
-nav i {
-  color: red;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  transform-origin: bottom;
 }
 
 .rightHeader:hover .fa-angles-down {
