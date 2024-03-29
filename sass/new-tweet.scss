@@ -1,0 +1,45 @@
+.new-tweet {
+  display: none;
+  flex-direction: column;
+  background-color: #BFD2D1;
+  width: 100%;
+  padding: 0px 40px 20px 40px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  border: none;
+  background-color: inherit;
+  border-bottom: .5rem solid #545149;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.new-tweet-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Bungee", sans-serif;
+  padding: 0px 10px 0 10px;
+}
+
+button {
+  color: #FFFFFF;
+  background-color: #4056A1;
+}
+
+.negative {
+  color: red;
+}
+
+.error-message {
+  color: #af4242;
+  background-color: #fde8ec;
+  border: 2px solid #af4242;
+  text-align: center;
+  display: none;
+  padding: 5px;
+}
+
+.error-message.display-error {
+  display: block;
+}

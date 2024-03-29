@@ -1,0 +1,21 @@
+.header {
+  height: 520px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-direction: column;
+  padding-top: 130px;
+  background-color: #ecd29a;
+  background-image: url("https://www.transparenttextures.com/patterns/skulls.png");
+}
+
+@media only screen and (min-width: 1024px) {
+
+  .header {
+    height: 500px;
+    margin-top: 70px;
+    margin-left: 20px;
+  }
+}
